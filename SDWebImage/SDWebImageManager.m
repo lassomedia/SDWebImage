@@ -37,16 +37,20 @@
 
 - (id)init
 {
+    return [self initWithImageCache: nil];
+}
+
+- (id)initWithImageCache: (SDImageCache *)cache
+{
     if ((self = [super init]))
     {
-        _imageCache = SDImageCache.new;
+        _imageCache = SSValueOrFallback(cache, [SDImageCache new]);
         _imageDownloader = SDWebImageDownloader.new;
         _failedURLs = NSMutableArray.new;
         _runningOperations = NSMutableArray.new;
     }
     return self;
 }
-
 
 - (NSString *)cacheKeyForURL:(NSURL *)url
 {

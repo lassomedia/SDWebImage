@@ -61,6 +61,8 @@ typedef void(^SDWebImageCompletedWithFinishedBlock)(UIImage *image, NSError *err
  */
 @interface SDWebImageManager : NSObject
 
+- (id)initWithImageCache: (SDImageCache *)cache;
+
 @property (strong, nonatomic, readonly) SDImageCache *imageCache;
 @property (strong, nonatomic, readonly) SDWebImageDownloader *imageDownloader;
 
